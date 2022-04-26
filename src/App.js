@@ -35,27 +35,27 @@ function App() {
       <ExpenseItem
         title={expenses[0].title}
         price={expenses[0].price}
-        date={expenses[0].date.toISOString()}
+        date={expenses[0].date}
       ></ExpenseItem>
       <ExpenseItem
         title={expenses[1].title}
         price={expenses[1].price}
-        date={expenses[1].date.toISOString()}
+        date={expenses[1].date}
       ></ExpenseItem>
       <ExpenseItem
         title={expenses[2].title}
         price={expenses[2].price}
-        date={expenses[2].date.toISOString()}
+        date={expenses[2].date}
       ></ExpenseItem>
       <ExpenseItem
         title={expenses[3].title}
         price={expenses[3].price}
-        date={expenses[3].date.toISOString()}
+        date={expenses[3].date}
       ></ExpenseItem>
       <ExpenseItem
         title={expenses[4].title}
         price={expenses[4].price}
-        date={expenses[4].date.toISOString()}
+        date={expenses[4].date}
       ></ExpenseItem>
     </div>
   );
