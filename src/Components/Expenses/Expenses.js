@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
+import NewExpense from "../NewExpenses/NewExpense";
 import ExpensesFilter from "../ExpenseFilter/ExpenseFilter";
 import "./Expenses.css";
 
 function Expenses(props) {
-  const expenses = [
+  const DUMMY_EXPENSES = [
     {
       id: "e1",
       title: "Car Insurance",
@@ -38,7 +39,13 @@ function Expenses(props) {
     },
   ];
 
-  const newExpense = props.expenseArray;
+  const addExpenseHandler = (newExpense) => {
+    setExpenses((previousExpenses) => {
+      return [newExpense, ...previousExpenses];
+    });
+  };
+
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const [year, setYear] = useState("2020");
   const selectYearHandler = (yearValue) => {
@@ -49,37 +56,22 @@ function Expenses(props) {
 
   return (
     <div>
+      <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
+
       <Card className="expenses">
         <ExpensesFilter
           onSelectYear={selectYearHandler}
           filteredYear={year}
         ></ExpensesFilter>
-
-        <ExpenseItem
-          title={expenses[0].title}
-          price={expenses[0].price}
-          date={expenses[0].date}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={expenses[1].title}
-          price={expenses[1].price}
-          date={expenses[1].date}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={expenses[2].title}
-          price={expenses[2].price}
-          date={expenses[2].date}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={expenses[3].title}
-          price={expenses[3].price}
-          date={expenses[3].date}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={expenses[4].title}
-          price={expenses[4].price}
-          date={expenses[4].date}
-        ></ExpenseItem>
+        {expenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            price={expense.price}
+            date={expense.date}
+          />
+        ))}
+        ;
       </Card>
     </div>
   );
