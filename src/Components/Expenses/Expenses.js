@@ -36,6 +36,10 @@ function Expenses(props) {
     },
   ];
 
+  const addExpenseHandler = () => {
+    console.log("Expense Added");
+  };
+
   return (
     <Card className="expenses">
       <ExpenseItem
