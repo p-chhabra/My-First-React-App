@@ -1,8 +1,8 @@
 import Expenses from "./Components/Expenses/Expenses";
-import NewExpense from "./Components/Expenses/NewExpense";
+import NewExpense from "./Components/NewExpenses/NewExpense";
 
 function App() {
-  const expenseArray = {};
+  let expenseArray = {};
   const addExpenseHandler = (expenseData) => {
     expenseArray = {
       ...expenseData,

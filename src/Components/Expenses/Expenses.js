@@ -1,5 +1,7 @@
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
+import ExpensesFilter from "../ExpenseFilter/ExpenseFilter";
 import "./Expenses.css";
 
 function Expenses(props) {
@@ -36,38 +38,50 @@ function Expenses(props) {
     },
   ];
 
-  const addExpenseHandler = () => {
-    console.log("Expense Added");
+  const newExpense = props.expenseArray;
+
+  const [year, setYear] = useState("2020");
+  const selectYearHandler = (yearValue) => {
+    const _year = yearValue;
+    setYear(_year);
+    console.log(_year);
   };
 
   return (
-    <Card className="expenses">
-      <ExpenseItem
-        title={expenses[0].title}
-        price={expenses[0].price}
-        date={expenses[0].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[1].title}
-        price={expenses[1].price}
-        date={expenses[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[2].title}
-        price={expenses[2].price}
-        date={expenses[2].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[3].title}
-        price={expenses[3].price}
-        date={expenses[3].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[4].title}
-        price={expenses[4].price}
-        date={expenses[4].date}
-      ></ExpenseItem>
-    </Card>
+    <div>
+      <Card className="expenses">
+        <ExpensesFilter
+          onSelectYear={selectYearHandler}
+          filteredYear={year}
+        ></ExpensesFilter>
+
+        <ExpenseItem
+          title={expenses[0].title}
+          price={expenses[0].price}
+          date={expenses[0].date}
+        ></ExpenseItem>
+        <ExpenseItem
+          title={expenses[1].title}
+          price={expenses[1].price}
+          date={expenses[1].date}
+        ></ExpenseItem>
+        <ExpenseItem
+          title={expenses[2].title}
+          price={expenses[2].price}
+          date={expenses[2].date}
+        ></ExpenseItem>
+        <ExpenseItem
+          title={expenses[3].title}
+          price={expenses[3].price}
+          date={expenses[3].date}
+        ></ExpenseItem>
+        <ExpenseItem
+          title={expenses[4].title}
+          price={expenses[4].price}
+          date={expenses[4].date}
+        ></ExpenseItem>
+      </Card>
+    </div>
   );
 }
 
