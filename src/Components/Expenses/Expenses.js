@@ -54,6 +54,10 @@ function Expenses(props) {
     console.log(_year);
   };
 
+  const filteredExpenses = expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() == year;
+  });
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
@@ -63,7 +67,7 @@ function Expenses(props) {
           onSelectYear={selectYearHandler}
           filteredYear={year}
         ></ExpensesFilter>
-        {expenses.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
