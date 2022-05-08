@@ -1,3 +1,4 @@
 # My-First-React-App
 ### Working on this project  
-- Application to maintain your expenses.
+- An application to maintain your expenses.
+- Allows insertion, deletion and sorting of various expenses in one click.
